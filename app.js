@@ -2,7 +2,7 @@ var ele=document.body.querySelector(".main")
 
 var damage = 0;
 
-var attacks = [{attack:"fire",dam:"3"}, {attack: "ice",dam:"1"}, {attack: "poison",dam:"4"}];
+var list=[{attack:"fire",dam:"3"}, {attack: "ice",dam:"1"}, {attack: "poison",dam:"4"}];
 
 function renderList(){
     ele.innerHTML=""
@@ -11,28 +11,35 @@ function renderList(){
             makeEle("aha you won :) pog");
         }
 }
-function makeEle (name){
+function makeEle (attack){
     var dragEle=document.createElement("div");
-    dragEle.innerHTML=name;
+    dragEle.innerHTML=attack;
     ele.appendChild(dragEle);
 }
-function attackDragon(){
-    damage=damage+attacks[i].dam;
-}
+// function typeAttack(){
+//     if (document.body.querySelector(".fire")){
+//         damage= -1;
+//     }
+//     if (document.body.querySelector(".ice")){
+//         damage= +1;
+//     }
+// }
 
 renderList();
 makeEle();
-attackDragon();
+// typeAttack();
 
 document.body.querySelector(".fire").addEventListener("click", function(){
-    attackDragon("fire");
+    damage=damage+3;
     renderList();
-}
+    // typeAttack();
+})
 document.body.querySelector(".ice").addEventListener("click", function(){
-    attackDragon("ice");
+    damage=damage+1;
     renderList();
-}
+    // typeAttack();
+})
 document.body.querySelector(".poison").addEventListener("click", function(){
-    attackDragon("poison");
+    damage=damage+4;
     renderList();
-}
+})
